@@ -4,9 +4,9 @@ import {
   SearchIcon,
   LibraryIcon,
   PlusCircleIcon,
-  HeartIcon,
   RssIcon,
 } from '@heroicons/react/outline'
+import { HeartIcon } from '@heroicons/react/solid'
 import SidebarButtons from './SidebarButtons'
 import HoritzontalLine from '../common/HortizontalLine'
 import useSpotify from '../../hooks/useSpotify'
@@ -30,15 +30,23 @@ function Sidebar() {
   }, [session, spotifyApi])
 
   return (
-    <div className="md:inline-flex hidden h-screen overflow-y-scroll border-r border-gray-900 p-5 text-xs  text-gray-500 scrollbar-hide sm:max-w-[12rem] lg:max-w-[15rem] lg:text-sm">
+    <div className="hidden h-screen overflow-y-scroll border-r border-gray-900 p-5 pb-36 text-xs  text-gray-500 scrollbar-hide sm:max-w-[12rem] md:inline-flex lg:max-w-[15rem] lg:text-sm">
       <div className="space-y-4">
         <SidebarButtons ButtonIcon={HomeIcon} text={'Home'} />
         <SidebarButtons ButtonIcon={SearchIcon} text={'Search'} />
         <SidebarButtons ButtonIcon={LibraryIcon} text={'Library'} />
         <HoritzontalLine />
         <SidebarButtons ButtonIcon={PlusCircleIcon} text={'Create Playlist'} />
-        <SidebarButtons ButtonIcon={HeartIcon} text={'Liked Songs'} />
-        <SidebarButtons ButtonIcon={RssIcon} text={'Your episodes'} />
+        <SidebarButtons
+          ButtonIcon={HeartIcon}
+          text={'Liked Songs'}
+          iconClassName="text-blue-500"
+        />
+        <SidebarButtons
+          ButtonIcon={RssIcon}
+          text={'Your episodes'}
+          iconClassName="text-green-500"
+        />
         <HoritzontalLine />
         {playlist.map((pl) => (
           <PlaylistButtons
